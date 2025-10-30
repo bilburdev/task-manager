@@ -6,6 +6,7 @@ import { useSignin } from '@/lib/hooks/useSignin';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 import Button from '@/components/ui/Button';
+import GoogleAuth from '@/app/(auth)/login/GoogleAuth';
 
 export default function LoginForm() {
   const signin = useSignin();
@@ -78,6 +79,7 @@ export default function LoginForm() {
         >
           Sign in as Guest(demo)
         </Button>
+        <GoogleAuth />
         <Button
           onClick={() => {
             router.replace('/register');

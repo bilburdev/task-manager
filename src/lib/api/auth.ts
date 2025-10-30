@@ -37,3 +37,14 @@ export async function signout() {
   }
   return null;
 }
+
+export async function googleSignin() {
+  const res = await fetch(`${API_URL}/auth/google/url`, {
+    method: 'GET',
+    credentials: 'include',
+  });
+  if (!res.ok) {
+    throw new Error('Google Signin failed');
+  }
+  return res.json();
+}
