@@ -7,7 +7,6 @@ export default function GoogleAuth() {
     try {
       const url = await googleSignin();
       const newWindow = url.data.url;
-      console.log(url.data.url);
 
       if (typeof newWindow === 'string') {
         window.location.href = newWindow;
