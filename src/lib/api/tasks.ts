@@ -3,10 +3,13 @@ const API_URL = 'https://task-manager-backend-dif5.onrender.com';
 // 'https://task-manager-backend-dif5.onrender.com';
 // 'http://localhost:8080';
 
-export async function getTasks(query?: string) {
+export async function getTasks(query?: string, status?: string) {
   const params = new URLSearchParams();
   if (query) {
     params.append('search', query);
+  }
+  if (status && status !== 'all') {
+    params.append('status', status);
   }
 
   const res = await fetch(`${API_URL}/tasks?${params.toString()}`, {

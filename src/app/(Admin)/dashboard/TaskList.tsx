@@ -6,8 +6,14 @@ import { ITaskCard } from '@/lib/types/types';
 import { useRouter } from 'next/navigation';
 import { useEffect } from 'react';
 
-export default function TaskList() {
-  const { data, isLoading, isError } = useTasks();
+export default function TaskList({
+  query,
+  status,
+}: {
+  query: string;
+  status: 'all' | 'completed' | 'incomplete';
+}) {
+  const { data, isLoading, isError } = useTasks(query, status);
   const router = useRouter();
 
   useEffect(() => {

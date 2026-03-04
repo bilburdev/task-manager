@@ -1,12 +1,15 @@
-import { useTasks } from '@/lib/hooks/useCRUD';
 import { useState } from 'react';
 
-export default function SearchBar() {
+export default function SearchBar({
+  setQuery,
+}: {
+  setQuery: React.Dispatch<React.SetStateAction<string>>;
+}) {
   const [searchValue, setSearchValue] = useState('');
-  const { refetch } = useTasks(searchValue, true);
+
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();
-    refetch();
+    setQuery(searchValue);
   };
 
   return (

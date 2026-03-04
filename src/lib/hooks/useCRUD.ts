@@ -2,10 +2,14 @@ import { createTask, deleteTask, getTasks, updateTask } from '@/lib/api/tasks';
 import { ITaskCard } from '@/lib/types/types';
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 
-export function useTasks(query?: string, enabled: boolean = true) {
+export function useTasks(
+  query?: string,
+  status: 'all' | 'completed' | 'incomplete' = 'all',
+  enabled: boolean = true,
+) {
   return useQuery({
-    queryKey: ['tasks'],
-    queryFn: () => getTasks(query),
+    queryKey: ['tasks', query ?? '', status],
+    queryFn: () => getTasks(query, status),
     enabled,
     staleTime: 1000 * 60 * 5, // 5 minutes
   });
