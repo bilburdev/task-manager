@@ -1,4 +1,4 @@
-const API_URL = 'https://task-manager-backend-dif5.onrender.com';
+const API_URL = 'http://localhost:8080';
 // 'https://task-manager-backend-dif5.onrender.com';
 // 'http://localhost:8080';
 
